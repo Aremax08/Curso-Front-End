@@ -1,0 +1,13 @@
+body{
+    background-color: rgb(212, 212, 71);
+    font-family: 'Courier New', Courier, monospace;
+}
+h1{
+    color: darkblue;
+    text-align: center;
+}
+p{
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 20px;
+}
