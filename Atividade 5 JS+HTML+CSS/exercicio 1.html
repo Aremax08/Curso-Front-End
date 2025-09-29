@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Insira a Data</h1>
+    <input type="date" id="Datainput">
+    <button onclick="datinha()">Mostrar data por extenso</button>
+    <p id ="Data"></p>
+    <script>
+    function datinha(){
+    const valor = document.getElementById("Datainput").value;
+    const partes = valor.split("/");
+    const dia = parseInt(partes[0],10);
+
+    const mes = parseInt(partes[1],10) -1;
+
+    const ano = parseInt(partes[2],10);
+
+    const Data = new Date(ano, mes, dia);
+    const dataportenso = Data.toLocaleDateString("pt-BR", {
+    year:"numeric",
+    month:"long",
+    day:"numeric"
+    
+    });
+    document.getElementById("Data").textContent = dataportenso
+}
+
+    </script>
+</body>
+</html>
