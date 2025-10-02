@@ -13,24 +13,43 @@
 <p>Digite a taxa de Juros mensal</p>
 <input type="number" min="1" max="100" id="taxa">
 <button onclick="Calculo()"> Calcular</button>
-<p id="Total"></p>
-<p id="Parcela"></p>
+
 
 
 <script>
-const emprestimo = document.getElementById("emprestimo");
-const parcelas = document.getElementById("parcelas");
-const taxa = document.getElementById("taxa");
+   function Calculo() {
+  const emprestimo = parseFloat(document.getElementById("emprestimo").value);
+  const parcelas = parseInt(document.getElementById("parcelas").value);
+  const taxa = parseFloat(document.getElementById("taxa").value) / 100; 
+
+  
+  const valorParcela = emprestimo * (taxa * Math.pow(1 + taxa, parcelas)) / (Math.pow(1 + taxa, parcelas) - 1);
+
+  const valorTotal = valorParcela * parcelas;
+
+  const paragrafoTotal = document.createElement("p");
+  paragrafoTotal.textContent = "Valor total a pagar: R$ " + valorTotal.toFixed(2);
+  document.body.appendChild(paragrafoTotal);
+
+  const paragrafoParcelas = document.createElement("p");
+  paragrafoParcelas.textContent = "Valor da parcela: R$ " + valorParcela.toFixed(2);
+  document.body.appendChild(paragrafoParcelas);
+
+  const tabela = document.createElement ("table");
+  const row = document.createElement ("tr");
+  for (let i = 1; i <= parcelas; i++){
+    const celula = document.createElement ("td");
+    celula.textContent = 'parcela' + i;
 
 
+  }
+  document.body.appendChild(tabela);
+
+
+
+}
 
 </script>
-
-
-
-
-
-
 
 </body>
 </html>
