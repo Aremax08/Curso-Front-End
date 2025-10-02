@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+    
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="style 2.css">
 </head>
+
 <body>
 <h1>Faça já o seu empréstimo</h1>
+
 <p>Digite o valor do emprestimo</p>
 <input type="number" id="emprestimo">
+
 <p>Digite o numero de parcelas</p>
 <input type="number" min="1" max="36" id="parcelas">
+
 <p>Digite a taxa de Juros mensal</p>
 <input type="number" min="1" max="100" id="taxa">
+
 <button onclick="Calculo()"> Calcular</button>
-
-
 
 <script>
    function Calculo() {
-  const emprestimo = parseFloat(document.getElementById("emprestimo").value);
-  const parcelas = parseInt(document.getElementById("parcelas").value);
-  const taxa = parseFloat(document.getElementById("taxa").value) / 100; 
+  const emprestimo = parseFloat(document.getElementById('emprestimo').value);
+  const parcelas = parseInt(document.getElementById('parcelas').value);
+  const taxa = parseFloat(document.getElementById('taxa').value) / 100; 
 
-  
   const valorParcela = emprestimo * (taxa * Math.pow(1 + taxa, parcelas)) / (Math.pow(1 + taxa, parcelas) - 1);
-
   const valorTotal = valorParcela * parcelas;
 
-  const paragrafoTotal = document.createElement("p");
-  paragrafoTotal.textContent = "Valor total a pagar: R$ " + valorTotal.toFixed(2);
+  const paragrafoTotal = document.createElement('p');
+  paragrafoTotal.textContent = 'Valor total a pagar: R$ ' + valorTotal.toFixed(2);
   document.body.appendChild(paragrafoTotal);
 
-  const paragrafoParcelas = document.createElement("p");
-  paragrafoParcelas.textContent = "Valor da parcela: R$ " + valorParcela.toFixed(2);
+  const paragrafoParcelas = document.createElement('p');
+  paragrafoParcelas.textContent = 'Valor da parcela: R$ ' + valorParcela.toFixed(2);
   document.body.appendChild(paragrafoParcelas);
 
-  const tabela = document.createElement ("table");
-  const row = document.createElement ("tr");
-  for (let i = 1; i <= parcelas; i++){
-    const celula = document.createElement ("td");
+  const tabela = document.createElement('table');
+  const row = document.createElement('tr');
+  for (let i = 1; i <= parcelas; i++) {
+    const celula = document.createElement('td');
     celula.textContent = 'parcela' + i;
-
-
+    row.appendChild(celula);
   }
+
+  tabela.appendChild(row); 
   document.body.appendChild(tabela);
-
-
-
+  
 }
-
 </script>
 
 </body>
